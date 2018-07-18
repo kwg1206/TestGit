@@ -56,6 +56,7 @@ public class TicTacToe {
 	            if ((n==0&&x==1) || (n==1&&x==2) || (n==2&&x==0)) {
 	                System.out.println("你赢了,请进入下一个游戏");
 	                k=1;
+	        		new TicTacToe().init();
 	            }else if(n == x){
 	                System.out.println("打平");
 	            }else {
@@ -64,7 +65,7 @@ public class TicTacToe {
 	            }
 	            System.out.println("\n");
 	        } while (k==0);
-		new TicTacToe().init();
+
 	}
 	public void init(){	
 		img1 = new ImageIcon("1.jpg");
