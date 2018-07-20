@@ -16,10 +16,10 @@ public class TicTacToe {
 	static int a;
 	boolean ture=true;
 	boolean win = false;
-	int count = 9;
+	int count = 100;
 	JFrame f = new JFrame();
 	JPanel p = new JPanel();
-	JButton[] b = new JButton[9];
+	JButton[] b = new JButton[100];
 	//---------------------------
     Box box=Box.createHorizontalBox();    
     JButton btnA=new JButton("Play game");    
@@ -70,16 +70,18 @@ public class TicTacToe {
 	public void init(){	
 		img1 = new ImageIcon("1.jpg");
 		img2 = new ImageIcon("2.jpg");
-		p.setLayout(new GridLayout (3,3));
+		p.setLayout(new GridLayout (10,10));
 		for(int i =0; i<b.length;i++){
 			b[i] = new JButton();
 			addListener(b[i],btnA,btnB,i);
 			p.add(b[i]);
+			System.out.println(i);
 		f.add(p);
-		f.setSize(300,300);
+		f.setSize(500,500);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+		
 	}
 	
 	public void addListener(JButton b,JButton btnA,JButton btnB,int i){
@@ -92,9 +94,9 @@ public class TicTacToe {
 				if(b.getIcon()==img1||b.getIcon()==img2){											
 						b.setIcon(ture?null:null);
 						ture=!ture;		
-						count = 9;
+						count = 100;
 					}
-				
+
 			}
 			
 			});
@@ -141,7 +143,7 @@ public class TicTacToe {
 					        JFrame f=new JFrame("BoxLayout");    
 					        //创建水平Box组件     
 					        Box box=Box.createHorizontalBox();     
-					        btnC=new JButton("O win");    
+					        btnC=new JButton("黑 win");    
 					        box.add(btnA);
 					        box.add(btnB); 
 					        box.add(btnC); 
@@ -154,7 +156,7 @@ public class TicTacToe {
 					        JFrame f=new JFrame("BoxLayout");    
 					        //创建水平Box组件     
 					        Box box=Box.createHorizontalBox();   
-					        btnC=new JButton("X win");   
+					        btnC=new JButton("白 win");   
 					        box.add(btnA);
 					        box.add(btnB); 
 					        box.add(btnC); 
@@ -176,25 +178,26 @@ public class TicTacToe {
 		}
 
 
-		public boolean checWin(int i){
+		public boolean checWin(int k){
 			boolean w = false;
-			int r = i/3;
-			int c = i%3;
-			if(b[r*3].getIcon()==b[r*3+1].getIcon()&&b[r*3+1].getIcon()==b[r*3+2].getIcon()){
+			int i = k+1;
+			int r = k/10;//列
+			int c = k%10;//行
+			if(b[i].getIcon()==b[i+1].getIcon()&&b[i+1].getIcon()==b[i+2].getIcon()&&b[i+2].getIcon()==b[i+3].getIcon()&&b[i+3].getIcon()==b[i+4].getIcon()){
 					w=true;
 			}
-			else if(b[0*3+c].getIcon()==b[1*3+c].getIcon()&&b[1*3+c].getIcon()==b[2*3+c].getIcon()){
+			else if(b[i].getIcon()==b[1*10+i].getIcon()&&b[1*10+i].getIcon()==b[2*10+i].getIcon()&&b[2*10+i].getIcon()==b[3*10+i].getIcon()&&b[3*10+i].getIcon()==b[4*10+i].getIcon()){
 					w = true;
 			}
-			else if(i%2==0){
-				if(b[0].getIcon()==b[4].getIcon()&&b[4].getIcon()==b[8].getIcon()&&b[0].getIcon()!=null){
-					w = true;				
-				}
-				else{
-					if(b[2].getIcon()==b[4].getIcon()&&b[4].getIcon()==b[6].getIcon()&&b[2].getIcon()!=null)
-					w = true;	
-				}
-			}
+//			else if(i%2==0){
+//				if(b[0].getIcon()==b[4].getIcon()&&b[4].getIcon()==b[8].getIcon()&&b[0].getIcon()!=null){
+//					w = true;				
+//				}
+//				else{
+//					if(b[2].getIcon()==b[4].getIcon()&&b[4].getIcon()==b[6].getIcon()&&b[2].getIcon()!=null)
+//					w = true;	
+//				}
+//			}
 			return w;	
 		}
 		

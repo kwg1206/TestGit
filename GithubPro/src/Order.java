@@ -80,9 +80,7 @@ public class Order {
 	public String toString() {
 		
 
-		return "Order [tableNumber=" + tableNumber + ", orderedMenu=" + orderedMenu + ", menuPrice=" + menuPrice
-
-				+ ", orderedNumber=" + orderedNumber + ", totalPrice=" + menuPrice*orderedNumber + "]";
+		return "Number=" + tableNumber ;
 
 	}
 
